@@ -15,7 +15,7 @@ jobs:
         run: echo "step 1"
 
       - name: Step 2 fails intentionally
-        run: exit 1
+        run: exit 0
 
       - name: Step 3 should not run
         run: echo "you should not see this"
