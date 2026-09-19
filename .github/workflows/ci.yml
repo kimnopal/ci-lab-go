@@ -8,11 +8,14 @@ permissions:
   contents: read
 
 jobs:
-  hello_ci:
+  exit-code-lab:
     runs-on: ubuntu-latest
     steps:
-      - name: Inspect Runner
-        run: |
-          echo "Hello World from GitHub Actions"
-          uname -a
-          pwd
+      - name: Step 1 succeeds
+        run: echo "step 1"
+
+      - name: Step 2 fails intentionally
+        run: exit 1
+
+      - name: Step 3 should not run
+        run: echo "you should not see this"
