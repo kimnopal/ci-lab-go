@@ -1,0 +1,18 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  hello_ci:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Inspect Runner
+        run: |
+          echo "Hello World from GitHub Actions"
+          uname -a
+          pwd
