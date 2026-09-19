@@ -8,14 +8,24 @@ permissions:
   contents: read
 
 jobs:
-  exit-code-lab:
+  quality:
     runs-on: ubuntu-latest
     steps:
-      - name: Step 1 succeeds
-        run: echo "step 1"
+      - name: Checkout repository
+        uses: actions/checkout@v7
 
-      - name: Step 2 fails intentionally
-        run: exit 0
+      - name: Setup Go
+        uses: actions/setup-go@v7
+        with:
+          go-version-file: go.mod
+          cache: true
+          cache-dependency-path: go.sum
 
-      - name: Step 3 should not run
-        run: echo "you should not see this"
+      - name: Verify formatting
+        run: test -z "$(gofmt -l .)"
+
+      - name: Vet
+        run: go vet ./...
+
+      - name: Unit test
+        run: go test -race ./...
