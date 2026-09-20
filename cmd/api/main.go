@@ -19,8 +19,7 @@ func main() {
 	}
 
 	db, err := database.Open(dsn)
-	if err != nil 
-	{
+if err != nil {
 		log.Fatal(err)
 	}
 	defer db.Close()
