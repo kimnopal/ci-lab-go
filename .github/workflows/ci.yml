@@ -52,9 +52,9 @@ jobs:
       DATABASE_URL: postgres://postgres:postgres@localhost:5432/ci_lab?sslmode=disable
 
     steps:
-      - uses: action/checkout@v7
+      - uses: actions/checkout@v7
 
-      - uses: action/setup-go@v7
+      - uses: actions/setup-go@v7
         with:
           go-version-file: go.mod
           cache: true
